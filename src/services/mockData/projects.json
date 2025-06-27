@@ -1,0 +1,34 @@
+[
+  {
+    "Id": 1,
+    "name": "Q1 Business Review",
+    "color": "#5B4FDB",
+    "icon": "BarChart3",
+    "taskCount": 2,
+    "order": 1
+  },
+  {
+    "Id": 2,
+    "name": "Website Redesign",
+    "color": "#4ECDC4",
+    "icon": "Monitor",
+    "taskCount": 4,
+    "order": 2
+  },
+  {
+    "Id": 3,
+    "name": "Team Development",
+    "color": "#FF6B6B",
+    "icon": "Users",
+    "taskCount": 2,
+    "order": 3
+  },
+  {
+    "Id": 4,
+    "name": "Marketing Campaign",
+    "color": "#FFE66D",
+    "icon": "Megaphone",
+    "taskCount": 0,
+    "order": 4
+  }
+]

@@ -1,0 +1,106 @@
+import tasksData from '../mockData/tasks.json';
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+let tasks = [...tasksData];
+
+const taskService = {
+  async getAll() {
+    await delay(300);
+    return [...tasks];
+  },
+
+  async getById(id) {
+    await delay(200);
+    const task = tasks.find(t => t.Id === parseInt(id, 10));
+    if (!task) {
+      throw new Error('Task not found');
+    }
+    return { ...task };
+  },
+
+  async create(taskData) {
+    await delay(400);
+    const maxId = tasks.length > 0 ? Math.max(...tasks.map(t => t.Id)) : 0;
+    const newTask = {
+      Id: maxId + 1,
+      title: taskData.title || '',
+      completed: false,
+      priority: taskData.priority || 'medium',
+      dueDate: taskData.dueDate || null,
+      projectId: taskData.projectId || null,
+      createdAt: new Date().toISOString(),
+      completedAt: null,
+      ...taskData
+    };
+    tasks.push(newTask);
+    return { ...newTask };
+  },
+
+  async update(id, updates) {
+    await delay(300);
+    const index = tasks.findIndex(t => t.Id === parseInt(id, 10));
+    if (index === -1) {
+      throw new Error('Task not found');
+    }
+    
+    const updatedTask = {
+      ...tasks[index],
+      ...updates,
+      Id: tasks[index].Id // Prevent Id modification
+    };
+    
+    // Handle completion status
+    if (updates.completed !== undefined) {
+      updatedTask.completedAt = updates.completed ? new Date().toISOString() : null;
+    }
+    
+    tasks[index] = updatedTask;
+    return { ...updatedTask };
+  },
+
+  async delete(id) {
+    await delay(250);
+    const index = tasks.findIndex(t => t.Id === parseInt(id, 10));
+    if (index === -1) {
+      throw new Error('Task not found');
+    }
+    const deletedTask = tasks[index];
+    tasks.splice(index, 1);
+    return { ...deletedTask };
+  },
+
+  async getByProject(projectId) {
+    await delay(300);
+    return tasks.filter(t => t.projectId === parseInt(projectId, 10)).map(t => ({ ...t }));
+  },
+
+  async getTodayTasks() {
+    await delay(250);
+    const today = new Date().toISOString().split('T')[0];
+    const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    
+    return tasks.filter(t => 
+      !t.completed && (
+        t.dueDate === today || 
+        (t.dueDate && t.dueDate < today)
+      )
+    ).map(t => ({ ...t }));
+  },
+
+  async getUpcomingTasks() {
+    await delay(250);
+    const today = new Date().toISOString().split('T')[0];
+    
+    return tasks.filter(t => 
+      !t.completed && t.dueDate && t.dueDate > today
+    ).map(t => ({ ...t }));
+  },
+
+  async getCompletedTasks() {
+    await delay(300);
+    return tasks.filter(t => t.completed).map(t => ({ ...t }));
+  }
+};
+
+export default taskService;

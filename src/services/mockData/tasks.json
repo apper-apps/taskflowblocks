@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "title": "Review quarterly sales report",
+    "completed": false,
+    "priority": "high",
+    "dueDate": "2024-01-15",
+    "projectId": 1,
+    "createdAt": "2024-01-10T09:00:00Z",
+    "completedAt": null
+  },
+  {
+    "Id": 2,
+    "title": "Update website landing page copy",
+    "completed": false,
+    "priority": "medium",
+    "dueDate": "2024-01-16",
+    "projectId": 2,
+    "createdAt": "2024-01-10T10:30:00Z",
+    "completedAt": null
+  },
+  {
+    "Id": 3,
+    "title": "Schedule team retrospective meeting",
+    "completed": true,
+    "priority": "low",
+    "dueDate": "2024-01-12",
+    "projectId": 3,
+    "createdAt": "2024-01-09T14:15:00Z",
+    "completedAt": "2024-01-12T16:30:00Z"
+  },
+  {
+    "Id": 4,
+    "title": "Research competitor pricing strategies",
+    "completed": false,
+    "priority": "medium",
+    "dueDate": "2024-01-18",
+    "projectId": 1,
+    "createdAt": "2024-01-11T11:45:00Z",
+    "completedAt": null
+  },
+  {
+    "Id": 5,
+    "title": "Design new mobile app mockups",
+    "completed": false,
+    "priority": "high",
+    "dueDate": "2024-01-20",
+    "projectId": 2,
+    "createdAt": "2024-01-11T13:20:00Z",
+    "completedAt": null
+  },
+  {
+    "Id": 6,
+    "title": "Prepare presentation for client meeting",
+    "completed": false,
+    "priority": "high",
+    "dueDate": "2024-01-14",
+    "projectId": 3,
+    "createdAt": "2024-01-12T08:30:00Z",
+    "completedAt": null
+  },
+  {
+    "Id": 7,
+    "title": "Optimize database query performance",
+    "completed": true,
+    "priority": "medium",
+    "dueDate": "2024-01-11",
+    "projectId": 2,
+    "createdAt": "2024-01-08T15:00:00Z",
+    "completedAt": "2024-01-11T17:45:00Z"
+  },
+  {
+    "Id": 8,
+    "title": "Write blog post about new features",
+    "completed": false,
+    "priority": "low",
+    "dueDate": "2024-01-25",
+    "projectId": 2,
+    "createdAt": "2024-01-12T12:00:00Z",
+    "completedAt": null
+  }
+]
