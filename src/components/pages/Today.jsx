@@ -17,7 +17,6 @@ const Today = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-
   const loadData = async () => {
     setLoading(true);
     setError(null);
@@ -204,11 +203,12 @@ const Today = () => {
                   Overdue ({overdueTasks.length})
                 </h2>
               </div>
-              <TaskList
+<TaskList
                 tasks={overdueTasks}
                 projects={projects}
                 onTaskUpdate={handleTaskUpdate}
                 onTaskDelete={handleTaskDelete}
+                enableBulkActions={true}
               />
             </motion.div>
           )}
@@ -235,11 +235,12 @@ const Today = () => {
                 onAction={() => {}} // This will be handled by the header
               />
             ) : (
-              <TaskList
+<TaskList
                 tasks={todayTasks}
                 projects={projects}
                 onTaskUpdate={handleTaskUpdate}
                 onTaskDelete={handleTaskDelete}
+                enableBulkActions={true}
                 emptyStateProps={{
                   icon: "Calendar",
                   title: "No tasks for today",

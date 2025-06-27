@@ -282,11 +282,12 @@ const Archive = () => {
                       </span>
                     </div>
                     
-                    <TaskList
+<TaskList
                       tasks={group.tasks}
                       projects={projects}
                       onTaskUpdate={handleTaskUpdate}
                       onTaskDelete={handleTaskDelete}
+                      enableBulkActions={true}
                     />
                   </motion.div>
                 );

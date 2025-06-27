@@ -1,23 +1,32 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { format, isToday, isPast, parseISO } from 'date-fns';
-import { toast } from 'react-toastify';
-import ApperIcon from '@/components/ApperIcon';
-import Checkbox from '@/components/atoms/Checkbox';
-import Badge from '@/components/atoms/Badge';
-import Button from '@/components/atoms/Button';
-import taskService from '@/services/api/taskService';
-import projectService from '@/services/api/projectService';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { format, isPast, isToday, parseISO } from "date-fns";
+import { toast } from "react-toastify";
+import projectService from "@/services/api/projectService";
+import taskService from "@/services/api/taskService";
+import ApperIcon from "@/components/ApperIcon";
+import Checkbox from "@/components/atoms/Checkbox";
+import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
 
-const TaskItem = ({ task, project, onUpdate, onDelete, showProject = true }) => {
+const TaskItem = ({ 
+  task, 
+  project, 
+  onUpdate, 
+  onDelete, 
+  showProject = true,
+  selectionMode = false,
+  isSelected = false,
+  onSelectionChange 
+}) => {
   const [isCompleting, setIsCompleting] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(task.title);
 
   const handleComplete = async () => {
     if (isCompleting) return;
-    
     setIsCompleting(true);
+    
     try {
       const updatedTask = await taskService.update(task.Id, {
         completed: !task.completed

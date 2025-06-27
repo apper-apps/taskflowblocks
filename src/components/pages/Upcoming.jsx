@@ -271,11 +271,12 @@ const Upcoming = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  <TaskList
+<TaskList
                     tasks={filteredTasks}
                     projects={projects}
                     onTaskUpdate={handleTaskUpdate}
                     onTaskDelete={handleTaskDelete}
+                    enableBulkActions={true}
                   />
                 </motion.div>
               )}
